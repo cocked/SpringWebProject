@@ -17,9 +17,9 @@
         class="com.zaxxer.hikari.HikariConfig">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
         <property name="jdbcUrl"
-            value="jdbc:mysql://34.69.206.69:3306/MyDB?useSSL=false&amp;serverTimezone=UTC">
+            value="jdbc:mysql://34.82.81.163:3306/mydb?useSSL=false&amp;serverTimezone=UTC">
         </property>
-        <property name="username" value="de0978"></property>
+        <property name="username" value="user"></property>
         <property name="password" value="1234"></property>
     </bean>       
     
@@ -30,7 +30,23 @@
      <!-- mybatis SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
+    
+    	<!-- mybatis-config.xml이 스프링 시작될때 같이 실행되도록 설정하기  -->
+        <property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+    
+    	<!-- XML Mapper 인식하게 설정 -->
+    	<property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml"></property>
     </bean>
+	
+	<!-- mybatis SqlSessionTemplate Mybatis에서 DAOi 구현하기위한 작업-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+ 	
+ 	<!-- bean 등록 -->
+ 	<context:component-scan base-package="com.hayagou.dao"></context:component-scan>
+ 	<context:component-scan base-package="com.hayagou.service"></context:component-scan>
+ 	<context:component-scan base-package="com.hayagou.domain"></context:component-scan>
+ 	<context:component-scan base-package="com.hayagou.utils"></context:component-scan>
 
- 
 </beans>

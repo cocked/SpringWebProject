@@ -29,5 +29,4 @@ public class MariaDBConnectionTest {
            e.printStackTrace();
        }
    }
-   
 }

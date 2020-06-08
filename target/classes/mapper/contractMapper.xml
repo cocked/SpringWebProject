@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.hayagou.mapper.contractMapper">
+	
+	<select id="listSellContract" parameterType="String" resultType="com.hayagou.domain.ContractVO">
+		SELECT seller, buyer, regdate, ethereum
+		FROM tbl_smartcontract WHERE seller = #{user_hashcode}
+	</select>
+	
+	<select id="listBuyContract" parameterType="String" resultType="com.hayagou.domain.ContractVO">
+		SELECT seller, buyer, regdate, ethereum
+		FROM tbl_smartcontract WHERE buyer = #{user_hashcode}
+	</select>
+	
+	
+</mapper>
