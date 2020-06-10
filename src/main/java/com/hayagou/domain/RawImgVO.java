@@ -6,6 +6,8 @@ public class RawImgVO{
 	private String raw_image_path;
 	private Date regdate;
 	private int price;
+	private String raw_image_title;
+	private String raw_image_content;
 	private boolean admin_accept;
 	
 	public String getRaw_image_path() {
@@ -30,6 +32,22 @@ public class RawImgVO{
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public String getRaw_image_title() {
+		return raw_image_title;
+	}
+
+	public void setRaw_image_title(String raw_image_title) {
+		this.raw_image_title = raw_image_title;
+	}
+
+	public String getRaw_image_content() {
+		return raw_image_content;
+	}
+
+	public void setRaw_image_content(String raw_image_content) {
+		this.raw_image_content = raw_image_content;
 	}
 
 	public boolean isAdmin_accept() {

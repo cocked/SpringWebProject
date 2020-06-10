@@ -12,6 +12,12 @@
 	<div id="root">
 		<header>
 			<h1>게시판</h1>
+			<c:if test="${user != null}">
+			<c:out value="${user.user_name}"></c:out> 님 환영합니다!
+			<form role="form" method=" post" action="/user/logout">
+				<button type="submit">로그아웃</button>
+			</form>
+		</c:if>
 		</header>
 		<hr/>
 		

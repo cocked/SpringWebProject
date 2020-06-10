@@ -13,21 +13,19 @@
 </head>
 
 <body>
-	<form role="form" action="uploadFormPOST" method="post" enctype="multipart/form-data" autocomplete="off">
+	<div class="container">
+		<form role="form" action="uploadFormPOST" method="post" enctype="multipart/form-data" autocomplete="off">
 
-		<label for="price">금액</label> 
-		<input type="text" id="price" name="price">
-		
-		
-		<div class="inputArea">
-			<label for="raw_image_path">이미지</label> 
-			<input type="file" id="raw_image_path" name="file" />
 			
-			<div class="select_img">
-				<img id="loadImg" src="" />
-			</div>
 
-			<script>
+			<div class="inputArea" style="margin-bottom: 50px;">
+				<label for="raw_image_path">이미지</label> <input type="file" id="raw_image_path" name="file" />
+
+				<div class="select_img" style="margin: 50px 0;">
+					<img id="loadImg" src="" />
+				</div>
+
+				<script>
 			$("#raw_image_path").change(function() {
 						if (this.files && this.files[0]) {
 							var reader = new FileReader;
@@ -39,13 +37,18 @@
 						}
 					});
 			</script>
+
+
+				<%=request.getRealPath("/") %>
+			</div>
 			
+			<label for="price">금액</label> <input type="text" id="price" name="price"> <br> 
+			<label for="price">제목</label> <input type="text" id="raw_image_title" name="raw_image_title"><br> 
+			<label for="price">설명</label> <input type="textarea" id="raw_image_content" name="raw_image_content"><br>
 
-			<%=request.getRealPath("/") %>
-		</div>
+			<button type="submit" value="업로드!" style="margin-top: 50px;">등록</button>
 
-		<button type="submit" value="업로드!">등록</button>>
-
-	</form>
+		</form>
+	</div>
 </body>
 </html>

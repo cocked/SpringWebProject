@@ -29,7 +29,16 @@
 	<!-- spring bean을 태그로 등록하지 않고 자동 검색 -->
 	<context:component-scan
 		base-package="com.hayagou" />
+	
+	<beans:bean id="AdminInterceptor" class="com.hayagou.interceptor.AdminInterceptor" />
 
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**" />
+			<beans:ref bean="AdminInterceptor" />
+		</interceptor>
+	</interceptors>
+	
 	<!-- 파일업로드에 필요한 bean -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

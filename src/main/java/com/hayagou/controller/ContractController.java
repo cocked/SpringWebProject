@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.hayagou.domain.MemberVO;
+import com.hayagou.domain.UserVO;
 import com.hayagou.service.ContractService;
 
 @Controller
@@ -32,7 +32,7 @@ public class ContractController {
 
 	//계약 조회
 	@RequestMapping(value = "/myPage/sellContractManage", method = RequestMethod.GET)
-	public String sellList(MemberVO vo,Model model) throws Exception{
+	public String sellList(UserVO vo,Model model) throws Exception{
 		logger.info("contractManage1");
 
 		//수정
@@ -43,7 +43,7 @@ public class ContractController {
 	}
 
 	@RequestMapping(value = "/myPage/buyContractManage", method = RequestMethod.GET)
-	public String buyList(MemberVO vo,Model model) throws Exception{
+	public String buyList(UserVO vo,Model model) throws Exception{
 		logger.info("contractManage2");
 
 		//수정
