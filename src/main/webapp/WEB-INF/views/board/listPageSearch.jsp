@@ -17,20 +17,6 @@
 </head>
 
 <body>
-	<%-- <div id="root">
-		<header>
-			<h1>게시판</h1>
-			<c:if test="${user != null}">
-				<c:out value="${user.user_name}"></c:out> 님 환영합니다!
-			<form role="form" method=" post" action="/user/logout">
-					<button type="submit">로그아웃</button>
-				</form>
-			</c:if>
-		</header>
-		<hr />
-
-		<nav>홈 - 글 작성</nav>
-		<hr /> --%>
 
 	<!-- navbar -->
 	<nav class="navbar navbar-expand-md navbar-light">
@@ -47,11 +33,11 @@
 							<img src="${path}/resources/images/yajasu.jpg" width="50" class="rounded-circle mr-3"> <a href="/" class="text-white">JAYASOU</a>
 						</div>
 						<ul class="navbar-nav flex-column mt-4">
-							<li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
-							<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
+							<li class="nav-item"><a href="/user/userUpdateView" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
+							<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Trade Information</a></li>
 							<li class="nav-item"><a href="/board/listPageSearch?num=1" class="nav-link text-white p-3 mb-2 current"><i class="fa fa-sticky-note text-light fa-lg mr-3"></i>Board</a></li>
-							<li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
-							<li class="nav-item"><a href="/image/uploadForm" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Image upload</a></li>
+							<!-- <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li> -->
+							<li class="nav-item"><a href="/image/uploadForm" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Image Upload</a></li>
 						</ul>
 					</div>
 					<!-- end of sidebar -->
@@ -95,7 +81,7 @@
 				<div class="modal-body">Press logout to leave</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+					<button onclick="location.href='/user/logout'" type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
 				</div>
 			</div>
 		</div>
@@ -171,16 +157,33 @@
 								<nav aria-label="...">
 									<ul class="pagination">
 										<c:if test="${page.prev}">
-											<li class="page-item"><a class="page-link" href="/board/listPageSearch?num=${page.startPageNum - 1}" tabindex="-1">이전</a></li>
-											<%-- <span>[ <a href="/board/listPageSearch?num=${page.startPageNum - 1}">이전</a> ]
-					</span> --%>
+											<li class="page-item">
+												<a class="page-link" href="/board/listPageSearch?num=${page.startPageNum - 1}" tabindex="-1">이전</a>
+											</li>
+											<%-- <span>[ <a href="/board/listPageSearch?num=${page.startPageNum - 1}">이전</a> ]</span> --%>
 										</c:if>
 
 										<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
 											<!-- <span>  -->
-											<li <c:out value="${select == num ? 'class=page-item active' : 'class=page-item'}" />><a class="page-link" href="/board/listPageSearch?num=${num}">${num} <span class="sr-only">(current)</span>
-											</a></li>
-
+											
+											<c:choose>
+												<c:when test="${select!=num}">
+													<li class="page-item">
+														<a class="page-link" href="/board/listPageSearch?num=${num}">${num} <span class="sr-only">(current)</span></a>
+													</li>
+												</c:when>
+												<c:otherwise>
+													<li class="page-item active">
+														<a class="page-link" href="/board/listPageSearch?num=${num}">${num} <span class="sr-only">(current)</span></a>
+													</li>
+												</c:otherwise>
+											</c:choose>
+											
+											
+											<%-- <li <c:out value="${select == num ? 'class=page-item active' : 'class=page-item'}" />>
+												<a class="page-link" href="/board/listPageSearch?num=${num}">${num} <span class="sr-only">(current)</span></a>
+											</li>
+ --%>
 
 											<%-- <c:if test="${select != num}">
 						<a href="/board/listPageSearch?num=${num}">${num}</a>

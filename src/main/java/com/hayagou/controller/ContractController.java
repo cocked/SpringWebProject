@@ -1,6 +1,7 @@
 package com.hayagou.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,7 @@ public class ContractController {
 	ContractService service;
 
 	//수정
-	String user_hashcode = "0x2f81c59fb4f0c3146483e72c1315833af79b6ea9323";
+	/* String user_hashcode = "0x12k3jbqaw987egasdljbasdf12"; */
 
 
 	@RequestMapping(value = "/myPage/contractManage", method = RequestMethod.GET)
@@ -32,22 +33,22 @@ public class ContractController {
 
 	//계약 조회
 	@RequestMapping(value = "/myPage/sellContractManage", method = RequestMethod.GET)
-	public String sellList(UserVO vo,Model model) throws Exception{
+	public String sellList(UserVO vo, Model model, HttpSession session) throws Exception{
 		logger.info("contractManage1");
-
-		//수정
-		vo.setUser_hashcode(user_hashcode);
+		
+		UserVO user = (UserVO)session.getAttribute("user");
+		vo.setUser_hashcode(user.getUser_hashcode());
 		model.addAttribute("sellList", service.sellList(vo.getUser_hashcode()));
 	
 		return "myPage/contractManage";
 	}
 
 	@RequestMapping(value = "/myPage/buyContractManage", method = RequestMethod.GET)
-	public String buyList(UserVO vo,Model model) throws Exception{
+	public String buyList(UserVO vo,Model model, HttpSession session) throws Exception{
 		logger.info("contractManage2");
 
-		//수정
-		vo.setUser_hashcode(user_hashcode);
+		UserVO user = (UserVO)session.getAttribute("user");
+		vo.setUser_hashcode(user.getUser_hashcode());
 		model.addAttribute("buyList", service.buyList(vo.getUser_hashcode()));
 
 		return "myPage/contractManage";

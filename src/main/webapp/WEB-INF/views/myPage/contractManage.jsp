@@ -13,7 +13,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="../../resources/style.css">
-    <title>My Page</title>
+    <title>거래 정보</title>
   </head>
   
   <script type="text/javascript"> 
@@ -48,10 +48,10 @@
               </div>
               <ul class="navbar-nav flex-column mt-4">
                	<li class="nav-item"><a href="/user/userUpdateView" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
-				<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
+				<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Trade Infomation</a></li>
 				<li class="nav-item"><a href="/board/listPageSearch?num=1" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fa fa-sticky-note text-light fa-lg mr-3"></i>Board</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
-				<li class="nav-item"><a href="/image/uploadForm" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Image upload</a></li>
+				<!-- <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li> -->
+				<li class="nav-item"><a href="/image/uploadForm" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Image Upload</a></li>
 						
               </ul>
             </div>
@@ -61,7 +61,7 @@
             <div class="col-xl-10 col-lg-9 col-md-8 ml-auto bg-dark fixed-top py-2 top-navbar">
               <div class="row align-items-center">
                 <div class="col-md-4">
-                  <h4 class="text-light text-uppercase mb-0">Dash board</h4>
+                  <h4 class="text-light text-uppercase mb-0"></h4>
                 </div>
                 <div class="col-md-5">
                   <form>
@@ -112,7 +112,7 @@
           <div class="col-xl-10 col-lg-9 col-md-8 ml-auto mt-4">
             <div class="row align-items-center">
               <div class="col-xl-10 col-12">
-                <h3 class="text-muted text-center mb-3 mt-5">판매 정보</h3>
+                <h3 class="text-muted text-center mb-3 mt-5">Get Coin Information</h3>
                 <table class="table table-dark table-hover text-center">
                   <thead>
                     <tr class="text-muted">
@@ -181,7 +181,7 @@
         <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
           <div class="row align-items-center">
             <div class="col-xl-10 col-12">
-              <h3 class="text-muted text-center mb-3">구매 정보</h3>
+              <h3 class="text-muted text-center mb-3">Sell Coin Information</h3>
               <table class="table table-dark table-hover text-center">
                 <thead>
                   <tr class="text-muted">

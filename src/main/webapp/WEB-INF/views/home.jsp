@@ -235,7 +235,7 @@
                     <form action="/user/signUp" method="post">
                         <div class="form-group has-feedback">
                             <label class="control-label" for="user_email">이메일</label> 
-                            <input class="form-control" type="text" id="user_email" name="user_email" placeholder="example@email.com" required="required"/>
+                            <input class="form-control" type="email" id="user_email" name="user_email" placeholder="example@email.com" required="required"/>
                         </div>
                         <div class="form-group has-feedback">
                             <label class="control-label" for="user_password">비밀번호</label> 

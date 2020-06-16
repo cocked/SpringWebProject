@@ -59,14 +59,6 @@
 </script>
 
 <body>
-	<!-- <div id="root">
-		<header>
-			<h1>게시판</h1>
-		</header>
-		<hr />
-
-		<nav>홈 - 글 작성</nav>
-		<hr /> -->
 
 	<!-- navbar -->
 	<nav class="navbar navbar-expand-md navbar-light">
@@ -84,10 +76,10 @@
 						</div>
 						<ul class="navbar-nav flex-column mt-4">
 							<li class="nav-item"><a href="/user/userUpdateView" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
-							<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
+							<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Trade Information</a></li>
 							<li class="nav-item"><a href="/board/listPageSearch?num=1" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fa fa-sticky-note text-light fa-lg mr-3"></i>Board</a></li>
-							<li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
-							<li class="nav-item"><a href="/image/uploadForm" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Image upload</a></li>
+							<!-- <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li> -->
+							<li class="nav-item"><a href="/image/uploadForm" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Image Upload</a></li>
 						</ul>
 					</div>
 					<!-- end of sidebar -->
@@ -131,7 +123,7 @@
 				<div class="modal-body">Press logout to leave</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+					<button onclick="location.href='/user/logout'" type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
 				</div>
 			</div>
 		</div>

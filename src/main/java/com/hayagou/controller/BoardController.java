@@ -62,6 +62,7 @@ public class BoardController {
 		logger.info("read");
 
 		model.addAttribute("read", service.read(vo.getNum()));
+		
 
 		return "board/readView";
 	}
@@ -69,19 +70,19 @@ public class BoardController {
 	@RequestMapping(value = "/board/updateView", method = RequestMethod.GET)
 	public String updateView(BoardVO vo, Model model) throws Exception{
 		logger.info("updateView");
-
+		
 		model.addAttribute("update", service.read(vo.getNum()));
-
+		
 		return "board/updateView";
 	}
 
 	@RequestMapping(value = "/board/update", method = RequestMethod.POST)
 	public String update(BoardVO vo) throws Exception{
-		logger.info("update");
+		logger.info("update"+ vo.getCount());
 
 		service.update(vo);
 
-		return "redirect:/board/list";
+		return "redirect:/board/listPageSearch?num=1";
 	}
 
 	@RequestMapping(value = "board/delete", method = RequestMethod.POST)
@@ -90,7 +91,7 @@ public class BoardController {
 
 		service.delete(vo.getNum());
 
-		return "redirect:/board/list";
+		return "redirect:/board/listPageSearch?num=1";
 	}
 
 	// 게시물 목록 + 페이징 

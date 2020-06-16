@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link rel="stylesheet" href="../../resources/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<title>게시글</title>
+<title>게시글 수정</title>
 </head>
 
 <style>
@@ -77,10 +77,10 @@
 						</div>
 						<ul class="navbar-nav flex-column mt-4">
 							<li class="nav-item"><a href="/user/userUpdateView" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
-							<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
+							<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Trade Information</a></li>
 							<li class="nav-item"><a href="/board/listPageSearch?num=1" class="nav-link text-white p-3 mb-2 current"><i class="fa fa-sticky-note text-light fa-lg mr-3"></i>Board</a></li>
-							<li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
-							<li class="nav-item"><a href="/image/uploadForm" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Image upload</a></li>
+							<!-- <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li> -->
+							<li class="nav-item"><a href="/image/uploadForm" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Image Upload</a></li>
 						</ul>
 					</div>
 					<!-- end of sidebar -->
@@ -124,7 +124,7 @@
 				<div class="modal-body">Press logout to leave</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+					<button onclick="location.href='/user/logout'" type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
 				</div>
 			</div>
 		</div>
@@ -153,6 +153,8 @@
 										<label for="content">내용</label>
 										<textarea class="chk form-control" rows="3" id="content" name="content" title="내용을 입력하세요.."><c:out value="${update.content}" /></textarea>
 										<br>
+										
+										<input type="hidden" name="num" value="${update.count}" readonly="readonly" />
 
 										<button type="button" class="cancel_btn btn btn-primary float-right" style="margin: 0 0;">
 											<span class="fas fa-list-alt" aria-hidden="true"></span>취소
