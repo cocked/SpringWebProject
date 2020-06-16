@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hayagou.domain.UserVO;
@@ -81,4 +82,54 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="/userUpdateView", method = RequestMethod.GET)
+	public String registerUpdateView() throws Exception{
+		
+		return "user/userUpdateView";
+	}
+
+	@RequestMapping(value="/userUpdate", method = RequestMethod.POST)
+	public String registerUpdate(UserVO vo, HttpSession session) throws Exception{
+		logger.info("updatePOST");
+		
+		service.userUpdate(vo);
+		
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/userDeleteView", method = RequestMethod.GET)
+	public String userDeleteView() throws Exception{
+		return "user/userDeleteView";
+	}	
+	
+	@RequestMapping(value="/userDelete", method = RequestMethod.POST)
+	public String userDelete(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
+		
+		service.userDelete(vo);
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
+	// 패스워드 체크
+	@ResponseBody
+	@RequestMapping(value = "/passChk", method = RequestMethod.POST)
+	public boolean passChk(UserVO vo) throws Exception {
+		logger.info("passChkPOST");
+
+		UserVO login = service.login(vo);
+		boolean pwdChk = passEncoder.matches(vo.getUser_password(), login.getUser_password());
+		return pwdChk;
+	}
+		
+	// 아이디 중복 체크
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value="/idChk", method = RequestMethod.POST) public int
+	 * idChk(UserVO vo) throws Exception { int result = service.idChk(vo); return
+	 * result; }
+	 */
 }

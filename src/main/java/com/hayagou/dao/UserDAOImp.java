@@ -26,6 +26,25 @@ public class UserDAOImp implements UserDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(Namespace + ".login", vo);
 	}
+
+	@Override
+	public void userUpdate(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(Namespace + ".userUpdate", vo); 
+	}
+
+	@Override
+	public void userDelete(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.delete(Namespace + ".userDelete", vo);
+	}
+
+	@Override
+	public int passChk(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		int result = sqlSession.selectOne(Namespace + ".passChk", vo);
+		return result;
+	}
 		
 	
 }

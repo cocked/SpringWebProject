@@ -26,6 +26,12 @@ public class RawImgServiceImp implements RawImgService {
 	}
 
 	@Override
+	public List<RawImgVO> topList() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listTopImg();
+	}
+	
+	@Override
 	public RawImgVO read(int num) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -42,5 +48,6 @@ public class RawImgServiceImp implements RawImgService {
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 }

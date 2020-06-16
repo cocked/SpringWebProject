@@ -9,10 +9,10 @@ import com.hayagou.domain.BoardVO;
 
 @Service
 public class BoardServiceImp implements BoardService {
-	
+
 	@Inject
 	private BoardDAO dao;
-	
+
 	@Override
 	public void write(BoardVO vo) throws Exception {
 		// TODO Auto-generated method stub
@@ -40,5 +40,24 @@ public class BoardServiceImp implements BoardService {
 	public void delete(int num) throws Exception {
 		// TODO Auto-generated method stub
 		dao.delete(num);
+	}
+
+	// 게시물 총 갯수
+	@Override
+	public int count() throws Exception {
+		return dao.count();
+	}
+
+	// 게시물 목록 + 페이징
+	@Override
+	public List listPage(int displayPost, int postNum) throws Exception {
+		return dao.listPage(displayPost, postNum);
+	}
+
+	// 게시물 목록 + 페이징 + 검색
+	@Override
+	public List<BoardVO> listPageSearch(
+			int displayPost, int postNum, String searchType, String keyword) throws Exception {
+		return  dao.listPageSearch(displayPost, postNum, searchType, keyword);
 	}
 }

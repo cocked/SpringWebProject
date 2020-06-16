@@ -14,4 +14,10 @@ public interface UserService {
 	public UserVO login(UserVO vo) throws Exception;
 
 	public void logout(HttpSession session) throws Exception;	
+	
+	public void userUpdate(UserVO vo) throws Exception;
+	
+	public void userDelete(UserVO vo) throws Exception;
+	
+	public int passChk(UserVO vo) throws Exception;
 }

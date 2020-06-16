@@ -15,18 +15,20 @@
 <body>
 	<div class="container">
 		<section id="content">
-			<form role="form" method="post" autocomplete="off">
-				<div class="input_area">
-					<label for="user_email">아이디</label> <input type="email" id="user_email" name="user_email" 
-					placeholder="example@email.com" required="required" />
+			<form role="form" action="/user/login" method="post" autocomplete="off">
+				<div class="form-group">
+					<label for="user_email">아이디</label> 
+					<input class="form-control" type="email" id="user_email" name="user_email" placeholder="example@email.com" required="required" />
 				</div>
 
 				<div class="input_area">
-					<label for="user_password">패스워드</label> <input type="password" id="user_password" name="user_password" 
-					placeholder="영문,숫자,특수문자 포함 8글자 이상" required="required" />
+					<label for="user_password">패스워드</label> 
+					<input class="form-control" type="password" id="user_password" name="user_password" placeholder="영문,숫자,특수문자 포함 8글자 이상" required="required" />
 				</div>
 
-				<button type="submit" id="signin_btn" name="signin_btn">로그인</button>
+				<div>
+					<button class="btn btn-primary" type="submit" id="signin_btn" name="signin_btn">로그인</button>
+				</div>
 
 				<c:if test="${msg == false}">
 					<p style="color: #f00;">로그인에 실패했습니다.</p>

@@ -32,4 +32,23 @@ public class UserServiceImp implements UserService {
 		// TODO Auto-generated method stub
 		session.invalidate();
 	}
+
+	@Override
+	public void userUpdate(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.userUpdate(vo);
+	}
+
+	@Override
+	public void userDelete(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.userDelete(vo);
+	}
+
+	@Override
+	public int passChk(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		int result = dao.passChk(vo);
+		return result;
+	}
 }

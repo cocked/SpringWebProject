@@ -8,4 +8,6 @@ public interface RawImgDAO {
 	public void insertRawImg(RawImgVO vo);
 	
 	public List<RawImgVO> listImg();
+	
+	public List<RawImgVO> listTopImg();
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -13,53 +13,24 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link rel="stylesheet" href="../../resources/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<title>게시글</title>
+<title>게시판</title>
 </head>
 
-<style>
-
-</style>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		var formObj = $("form[name='updateForm']");
-
-		$(".cancel_btn").on("click", function() {
-			event.preventDefault();
-			location.href = "/board/listPageSearch?num=1";
-		})
-
-		$(".update_btn").on("click", function() {
-			if (fn_valiChk()) {
-				return false;
-			}
-			formObj.attr("action", "/board/update");
-			formObj.attr("method", "post");
-			formObj.submit();
-		})
-	})
-	
-	function fn_valiChk() {
-		var updateForm = $("form[name='updateForm'] .chk").length;
-		for (var i = 0; i < updateForm; i++) {
-			if ($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null) {
-				alert($(".chk").eq(i).attr("title"));
-				return true;
-			}
-		}
-	}
-</script>
-
 <body>
-	<!-- <div id="root">
+	<%-- <div id="root">
 		<header>
-			<h1>�Խ���</h1>
+			<h1>게시판</h1>
+			<c:if test="${user != null}">
+				<c:out value="${user.user_name}"></c:out> 님 환영합니다!
+			<form role="form" method=" post" action="/user/logout">
+					<button type="submit">로그아웃</button>
+				</form>
+			</c:if>
 		</header>
 		<hr />
 
-		<nav>Ȩ - �� �ۼ�</nav>
-		<hr /> -->
+		<nav>홈 - 글 작성</nav>
+		<hr /> --%>
 
 	<!-- navbar -->
 	<nav class="navbar navbar-expand-md navbar-light">
@@ -76,7 +47,7 @@
 							<img src="${path}/resources/images/yajasu.jpg" width="50" class="rounded-circle mr-3"> <a href="/" class="text-white">JAYASOU</a>
 						</div>
 						<ul class="navbar-nav flex-column mt-4">
-							<li class="nav-item"><a href="/user/userUpdateView" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
+							<li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
 							<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
 							<li class="nav-item"><a href="/board/listPageSearch?num=1" class="nav-link text-white p-3 mb-2 current"><i class="fa fa-sticky-note text-light fa-lg mr-3"></i>Board</a></li>
 							<li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
@@ -131,46 +102,114 @@
 	</div>
 	<!-- end of modal -->
 
-	<!-- section -->
+	<!-- tables -->
 	<section>
 		<div class="container-fluid">
 			<div class="row mb-5">
 				<div class="col-xl-10 col-lg-9 col-md-8 ml-auto mt-4">
-					<div class="row align-items-center">
+					<div class="row align-items-center" style>
 						<div class="col-xl-10 col-12">
-							<h2 class="text-muted text-center mb-5 mt-5" style="margin-left: 10%;">게시글 수정</h2>
-							<div class="container" style="margin-left: 10%">
-							
+							<h2 class="text-muted text-center mb-5 mt-5" style="margin-left : 10%;">게시판</h2>
+							<div class="container">
+								<div id="content" style="margin-left: 10%;">
+									<!-- <div class="container">
+		<section id="container"> -->
+									<form role="form" method="post" action="/board/write">
+										<table class="table table-hover">
+											<tr>
+												<th class="col-md-1 " scope="col">번호</th>
+												<th class="col-md-5 " scope="col">제목</th>
+												<th class="col-md-2 " scope="col">작성자</th>
+												<th class="col-md-2 " scope="col">작성일</th>
+												<th class="col-md-1 " scope="col">조회수</th>
+											</tr>
 
-								<form name="updateForm" role="form" method="post" action="/board/update">
-									<div class="form-group">
-										<input type="hidden" name="num" value="${update.num}" readonly="readonly" />
-										
-										<label for="title">제목</label> 
-										<input class="chk form-control form-control" type="text" id="title" name="title" value="${update.title}" title="제목을 입력하세요." /> 
-										<br>
-										
-										<label for="content">내용</label>
-										<textarea class="chk form-control" rows="3" id="content" name="content" title="내용을 입력하세요.."><c:out value="${update.content}" /></textarea>
-										<br>
 
-										<button type="button" class="cancel_btn btn btn-primary float-right" style="margin: 0 0;">
-											<span class="fas fa-list-alt" aria-hidden="true"></span>취소
-										</button>
-										<button type="submit" class="update_btn btn btn-primary float-right" style="margin: 0 0.5rem;">
-											<span class="fas fa-pencil-alt" aria-hidden="true"></span>작성
-										</button>
+											<c:forEach items="${list}" var="list">
+												<tr>
+													<td>
+														<c:out value="${list.num}"></c:out>
+													</td>
+													<td>
+														<a href="/board/readView?num=${list.num}"><c:out value="${list.title}"></c:out></a>
+													</td>
+													<td>
+														<c:out value="${list.writer}"></c:out>
+													</td>
+													<td>
+														<fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm"></fmt:formatDate>
+													</td>
+													<td>
+														<c:out value="${list.count}"></c:out>
+													</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</form>
+
+									<div class="list_footer">
+										<select name="searchType">
+											<option value="title">제목</option>
+											<option value="content">내용</option>
+											<option value="title_content">제목+내용</option>
+											<option value="writer">작성자</option>
+										</select>
+
+										<input type="text" name="keyword" />
+
+										<button class="btn btn-primary" type="button" id="searchBtn" style="margin-left: 1%;">검색</button>
+
+
+										<a href="/board/writeView" class="btn btn-primary float-right">글쓰기</a>
 									</div>
-								</form>
+								</div>
+							</div>
+
+							<hr />
+
+							<div class="text-center" style="margin-left: 40%; margin-top: 0px;">
+								<nav aria-label="...">
+									<ul class="pagination">
+										<c:if test="${page.prev}">
+											<li class="page-item"><a class="page-link" href="/board/listPageSearch?num=${page.startPageNum - 1}" tabindex="-1">이전</a></li>
+											<%-- <span>[ <a href="/board/listPageSearch?num=${page.startPageNum - 1}">이전</a> ]
+					</span> --%>
+										</c:if>
+
+										<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+											<!-- <span>  -->
+											<li <c:out value="${select == num ? 'class=page-item active' : 'class=page-item'}" />><a class="page-link" href="/board/listPageSearch?num=${num}">${num} <span class="sr-only">(current)</span>
+											</a></li>
+
+
+											<%-- <c:if test="${select != num}">
+						<a href="/board/listPageSearch?num=${num}">${num}</a>
+					</c:if>
+					<c:if test="${select == num}">
+						<b>${num}</b>
+					</c:if>
+					</span> --%>
+										</c:forEach>
+
+										<c:if test="${page.next}">
+											<li class="page-item"><a class="page-link" href="/board/listPageSearch?num=${page.endPageNum + 1}" " tabindex="-1">다음</a></li>
+											<%-- <span>[ <a href="/board/listPageSearch?num=${page.endPageNum + 1}">다음</a> ]
+						</span> --%>
+										</c:if>
+									</ul>
+
+
+								</nav>
+
 
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- end of section -->
 
 	<!-- footer -->
 	<footer>
@@ -197,97 +236,14 @@
 		</div>
 	</footer>
 	<!-- end of footer -->
+	<script>
+		document.getElementById("searchBtn").onclick = function() {
 
-	<!-- </div> -->
+			let searchType = document.getElementsByName("searchType")[0].value;
+			let keyword = document.getElementsByName("keyword")[0].value;
+
+			location.href = "/board/listPageSearch?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
+		};
+	</script>
 </body>
 </html>
-
-<%-- <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-</script>
-<title>�Խ���</title>
-</head>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		var formObj = $("form[name='updateForm']");
-
-		$(".cancel_btn").on("click", function() {
-			event.preventDefault();
-			location.href = "/board/list";
-		})
-
-		$(".update_btn").on("click", function() {
-			if (fn_valiChk()) {
-				return false;
-			}
-			formObj.attr("action", "/board/update");
-			formObj.attr("method", "post");
-			formObj.submit();
-		})
-	})
-	
-	function fn_valiChk() {
-		var updateForm = $("form[name='updateForm'] .chk").length;
-		for (var i = 0; i < updateForm; i++) {
-			if ($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null) {
-				alert($(".chk").eq(i).attr("title"));
-				return true;
-			}
-		}
-	}
-</script>
-<body>
-	<div id="root">
-		<header>
-			<h1>�Խ���</h1>
-		</header>
-		<hr />
-
-		<nav>Ȩ - �� �ۼ�</nav>
-		<hr />
-
-		<section id="container">
-			<form name="updateForm" role="form" method="post" action="/board/update">
-				<input type="hidden" name="num" value="${update.num}" readonly="readonly" />
-				<table>
-					<tbody>
-						<tr>
-							<td><label for="title">����</label><input type="text"
-								id="title" name="title" value="${update.title}" class="chk" title="������ �Է��ϼ���."/></td>
-						</tr>
-						<tr>
-							<td><label for="content">����</label>
-							<textarea id="content" name="content" class="chk" title="������ �Է��ϼ���.">
-							<c:out value="${update.content}" /></textarea></td>
-						</tr>
-						<tr>
-							<td><label for="writer">�ۼ���</label><input type="text"
-								id="writer" name="writer" value="${update.writer}"
-								readonly="readonly" /></td>
-						</tr>
-						<tr>
-							<td><label for="regdate">�ۼ���¥</label> <fmt:formatDate
-									value="${update.regdate}" pattern="yyyy-MM-dd HH:mm" /></td>
-						</tr>
-					</tbody>
-				</table>
-				<div>
-					<button type="submit" class="update_btn">����</button>
-					<button type="submit" class="cancel_btn">���</button>
-				</div>
-			</form>
-		</section>
-		<hr />
-	</div>
-</body>
-</html> --%>

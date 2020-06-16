@@ -32,6 +32,8 @@ public class HomeController {
 				
 		model.addAttribute("imgList", service.list() );
 		
+		model.addAttribute("topImgList", service.topList());
+		
 		return "home";
 	}
 	

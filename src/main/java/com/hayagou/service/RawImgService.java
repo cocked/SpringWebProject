@@ -11,7 +11,9 @@ public interface RawImgService {
 
 	//
 	public List<RawImgVO> list() throws Exception;
-
+	
+	public List<RawImgVO> topList() throws Exception;
+	
 	public RawImgVO read(int num) throws Exception;
 
 	public void update(RawImgVO vo) throws Exception;

@@ -8,13 +8,18 @@
 <mapper namespace="com.hayagou.mapper.ImageMapper">
 
     <insert id="insertRawImg">
-        INSERT INTO tbl_raw_image (raw_image_path, price, raw_image_title, raw_image_content) 
-        VALUES (#{raw_image_path}, #{price}, #{raw_image_title}, #{raw_image_content})    
+        INSERT INTO tbl_raw_image (raw_image_path, price, raw_image_title, raw_image_content, user_email) 
+        VALUES (#{raw_image_path}, #{price}, #{raw_image_title}, #{raw_image_content}, #{user_email})    
     </insert>
 	
 	<select id="listImg" resultType="com.hayagou.domain.RawImgVO">
 		SELECT raw_image_path, raw_image_title, raw_image_content
 		FROM tbl_raw_image ORDER BY price DESC
+	</select>
+	
+	<select id="listTopImg" resultType="com.hayagou.domain.RawImgVO">
+		SELECT raw_image_path, raw_image_title, raw_image_content
+		FROM tbl_raw_image ORDER BY price DESC limit 3
 	</select>
 	
 	<select id="read" parameterType="int" resultType="com.hayagou.domain.RawImgVO">

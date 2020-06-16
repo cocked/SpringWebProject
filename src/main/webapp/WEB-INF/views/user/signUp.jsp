@@ -14,16 +14,16 @@
 <script type="text/javascript">
 		$(document).ready(function(){
 			// 취소
-			$(".cencle").on("click", function(){
+			$(".cancel").on("click", function(){
 				
-				location.href = "/login";
+				location.href = "/";
 						    
 			})
 		
 			$("#submit").on("click", function(){
-				if($("#userId").val()==""){
+				if($("#user_email").val()==""){
 					alert("아이디를 입력해주세요.");
-					$("#userId").focus();
+					$("#user_email").focus();
 					return false;
 				}
 				if($("#user_password").val()==""){
@@ -31,9 +31,9 @@
 					$("#user_password").focus();
 					return false;
 				}
-				if($("#userName").val()==""){
+				if($("#user_name").val()==""){
 					alert("성명을 입력해주세요.");
-					$("#userName").focus();
+					$("#user_name").focus();
 					return false;
 				}
 			});
@@ -64,11 +64,46 @@
 				</div>
 				<div class="form-group has-feedback">
 					<button class="btn btn-primary" type="submit" id="submit">회원가입</button>
-					<button class="cancle btn btn-primary" type="button">취소</button>
+					<button class="cancel btn btn-primary" type="button">취소</button>
 				</div>
 			</form>
 		</section>
 	</div>
+	
+	<button type="button" data-toggle="modal" data-target="signIn">asdasdasd </button>
+	<!-- signin Modal -->
+    <div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">로그인</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="/user/login" method="post" autocomplete="off">
+                        <div class="form-group">
+                            <label for="user_email">아이디</label> 
+                            <input class="form-control" type="email" id="user_email" name="user_email" placeholder="example@email.com" required="required" />
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="user_password">패스워드</label> 
+                            <input class="form-control" type="password" id="user_password" name="user_password" placeholder="영문,숫자,특수문자 포함 8글자 이상" required="required" />
+                        </div>
+        
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" id="signin_btn" name="signin_btn">로그인</button>
+                        </div>
+        
+                        <c:if test="${msg == false}">
+                            <p style="color: #f00;">로그인에 실패했습니다.</p>
+                        </c:if>        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

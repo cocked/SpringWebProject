@@ -13,7 +13,7 @@
     </insert>
 	
 	<select id="listBoard" resultType="com.hayagou.domain.BoardVO">
-		SELECT num, title, writer, regdate
+		SELECT num, title, writer, regdate, count
 		FROM tbl_board ORDER BY num DESC 
 	</select>
 	
@@ -29,5 +29,46 @@
 	<delete id="delete" parameterType="int">
 		DELETE FROM tbl_board WHERE num = #{num}
 	</delete>
-	
+
+
+	<select id="count" resultType="int">
+		select count(num) from tbl_board
+	</select>
+
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="com.hayagou.domain.BoardVO">
+		select
+		num, title, writer, regdate, count
+		from tbl_board
+		order by num desc
+		limit #{displayPost}, #{postNum}
+	</select>
+
+	<!-- 게시물 목록 + 페이징 + 검색 -->
+	<select id="listPageSearch" parameterType="hashMap"
+		resultType="com.hayagou.domain.BoardVO">
+		select
+		num, title, writer, regdate, count
+		from tbl_board
+
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%', #{keyword}, '%')
+			or content LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		<if test='searchType.equals("writer")'>
+			WHERE writer LIKE concat('%', #{keyword}, '%')
+		</if>
+
+		order by num desc
+		limit #{displayPost}, #{postNum}
+	</select> 
 </mapper>

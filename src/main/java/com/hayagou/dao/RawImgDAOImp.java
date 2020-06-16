@@ -29,4 +29,10 @@ public class RawImgDAOImp implements RawImgDAO {
 		return sqlSession.selectList(Namespace + ".listImg");
 	}
 
+	@Override
+	public List<RawImgVO> listTopImg() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(Namespace + ".listTopImg");
+	}
+
 }

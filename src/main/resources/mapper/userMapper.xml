@@ -16,5 +16,23 @@
 		select user_name, user_email, user_password, user_hashcode, user_avaliable
 		from tbl_user where user_email = #{user_email}
 	</select>
+	
+	<update id="userUpdate">
+		UPDATE tbl_user SET <!-- user_password = #{user_password}, --> user_name = #{user_name}, user_hashcode = #{user_hashcode}
+		WHERE user_email = #{user_email}
+	</update>
+	
+	<delete id="userDelete">
+		DELETE FROM tbl_user
+		WHERE user_email = #{user_email}
+		 <!--  AND user_password = #{user_password} --> 
+	</delete>
+	
+	<!-- 패스워드 체크 -->
+	<select id="passChk" resultType="int">
+		SELECT COUNT(*) FROM tbl_user
+		WHERE user_email = #{user_email}
+		  AND user_password = #{user_password}
+	</select>
 </mapper>
 

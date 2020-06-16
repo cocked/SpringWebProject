@@ -13,7 +13,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="../../resources/style.css">
-    <title>Admin Dashboard</title>
+    <title>My Page</title>
   </head>
   
   <script type="text/javascript"> 
@@ -41,19 +41,18 @@
           <div class="row">
             <!-- sidebar -->
             <div class="col-xl-2 col-lg-3 col-md-4 sidebar fixed-top">
-              <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">Admin Page</a>
+              <a href="#" class="navbar-brand text-white d-block mx-auto text-center py-3 mb-4 bottom-border">My Page</a>
               <div class="bottom-border pb-3">
                 <img src="${path}/resources/images/yajasu.jpg" width="50" class="rounded-circle mr-3">
-                <a href="#" class="text-white">JAYASOU</a>
+                <a href="/" class="text-white">JAYASOU</a>
               </div>
               <ul class="navbar-nav flex-column mt-4">
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-home text-light fa-lg mr-3"></i>Dashboard</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-chart-bar text-light fa-lg mr-3"></i>Charts</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-table text-light fa-lg mr-3"></i>Tables</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
-                <li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Documentation</a></li>
+               	<li class="nav-item"><a href="/user/userUpdateView" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-user text-light fa-lg mr-3"></i>Profile</a></li>
+				<li class="nav-item"><a href="/myPage/contractManage" class="nav-link text-white p-3 mb-2 current"><i class="fas fa-chart-line text-light fa-lg mr-3"></i>Analytics</a></li>
+				<li class="nav-item"><a href="/board/listPageSearch?num=1" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fa fa-sticky-note text-light fa-lg mr-3"></i>Board</a></li>
+				<li class="nav-item"><a href="#" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-wrench text-light fa-lg mr-3"></i>Settings</a></li>
+				<li class="nav-item"><a href="/image/uploadForm" class="nav-link text-white p-3 mb-2 sidebar-link"><i class="fas fa-file-alt text-light fa-lg mr-3"></i>Image upload</a></li>
+						
               </ul>
             </div>
             <!-- end of sidebar -->
@@ -99,7 +98,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
+            <button onclick="location.href='/user/logout'" type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
           </div>
         </div>
       </div>

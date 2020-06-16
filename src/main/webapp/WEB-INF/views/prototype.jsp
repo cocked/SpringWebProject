@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link rel="stylesheet" href="../../resources/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<title>게시글</title>
+<title>게시판</title>
 </head>
 
 <style>
@@ -54,11 +54,11 @@
 <body>
 	<!-- <div id="root">
 		<header>
-			<h1>�Խ���</h1>
+			<h1>게시판</h1>
 		</header>
 		<hr />
 
-		<nav>Ȩ - �� �ۼ�</nav>
+		<nav>홈 - 글 작성</nav>
 		<hr /> -->
 
 	<!-- navbar -->
@@ -138,7 +138,7 @@
 				<div class="col-xl-10 col-lg-9 col-md-8 ml-auto mt-4">
 					<div class="row align-items-center">
 						<div class="col-xl-10 col-12">
-							<h2 class="text-muted text-center mb-5 mt-5" style="margin-left: 10%;">게시글 수정</h2>
+							<h2 class="text-muted text-center mb-5 mt-5" style="margin-left: 10%;">게시글 작성</h2>
 							<div class="container" style="margin-left: 10%">
 							
 
@@ -147,11 +147,13 @@
 										<input type="hidden" name="num" value="${update.num}" readonly="readonly" />
 										
 										<label for="title">제목</label> 
-										<input class="chk form-control form-control" type="text" id="title" name="title" value="${update.title}" title="제목을 입력하세요." /> 
+										<input class="form-control form-control" type="text" id="title" name="title" value="${update.title}" title="제목을 입력하세요." /> 
 										<br>
 										
 										<label for="content">내용</label>
-										<textarea class="chk form-control" rows="3" id="content" name="content" title="내용을 입력하세요.."><c:out value="${update.content}" /></textarea>
+										<textarea class="form-control" rows="3" id="content" name="content"  title="내용을 입력하세요.">
+											<c:out value="${update.content}" />
+										</textarea>
 										<br>
 
 										<button type="button" class="cancel_btn btn btn-primary float-right" style="margin: 0 0;">
@@ -201,93 +203,3 @@
 	<!-- </div> -->
 </body>
 </html>
-
-<%-- <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-</script>
-<title>�Խ���</title>
-</head>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-
-		var formObj = $("form[name='updateForm']");
-
-		$(".cancel_btn").on("click", function() {
-			event.preventDefault();
-			location.href = "/board/list";
-		})
-
-		$(".update_btn").on("click", function() {
-			if (fn_valiChk()) {
-				return false;
-			}
-			formObj.attr("action", "/board/update");
-			formObj.attr("method", "post");
-			formObj.submit();
-		})
-	})
-	
-	function fn_valiChk() {
-		var updateForm = $("form[name='updateForm'] .chk").length;
-		for (var i = 0; i < updateForm; i++) {
-			if ($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null) {
-				alert($(".chk").eq(i).attr("title"));
-				return true;
-			}
-		}
-	}
-</script>
-<body>
-	<div id="root">
-		<header>
-			<h1>�Խ���</h1>
-		</header>
-		<hr />
-
-		<nav>Ȩ - �� �ۼ�</nav>
-		<hr />
-
-		<section id="container">
-			<form name="updateForm" role="form" method="post" action="/board/update">
-				<input type="hidden" name="num" value="${update.num}" readonly="readonly" />
-				<table>
-					<tbody>
-						<tr>
-							<td><label for="title">����</label><input type="text"
-								id="title" name="title" value="${update.title}" class="chk" title="������ �Է��ϼ���."/></td>
-						</tr>
-						<tr>
-							<td><label for="content">����</label>
-							<textarea id="content" name="content" class="chk" title="������ �Է��ϼ���.">
-							<c:out value="${update.content}" /></textarea></td>
-						</tr>
-						<tr>
-							<td><label for="writer">�ۼ���</label><input type="text"
-								id="writer" name="writer" value="${update.writer}"
-								readonly="readonly" /></td>
-						</tr>
-						<tr>
-							<td><label for="regdate">�ۼ���¥</label> <fmt:formatDate
-									value="${update.regdate}" pattern="yyyy-MM-dd HH:mm" /></td>
-						</tr>
-					</tbody>
-				</table>
-				<div>
-					<button type="submit" class="update_btn">����</button>
-					<button type="submit" class="cancel_btn">���</button>
-				</div>
-			</form>
-		</section>
-		<hr />
-	</div>
-</body>
-</html> --%>

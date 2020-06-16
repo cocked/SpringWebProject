@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hayagou.domain.RawImgVO;
+import com.hayagou.domain.UserVO;
 import com.hayagou.service.RawImgService;
 import com.hayagou.utils.UploadFileUtils;
 
@@ -51,7 +53,7 @@ public class ImageController {
 	
 	//Post 방식 파일 업로드 + RawImage 디비 저장
 	@RequestMapping(value = "/image/uploadFormPOST", method = RequestMethod.POST)	
-	public String uploadFormPOST(RawImgVO vo, MultipartFile file, Model model) throws Exception {		
+	public String uploadFormPOST(RawImgVO vo, MultipartFile file, Model model, HttpSession session) throws Exception {		
 		
 		logger.info("uploadFormPost");
 		
@@ -72,9 +74,12 @@ public class ImageController {
 		} else {
 		 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 		}
-
+		
 		vo.setRaw_image_path(File.separator + "image" + ymdPath + File.separator + fileName);
-			
+		
+		UserVO user = (UserVO)session.getAttribute("user");
+		vo.setUser_email(user.getUser_email());
+		
 		service.insert(vo);
 		
 		//model.addAttribute("savedName", savedName);

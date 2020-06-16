@@ -9,6 +9,7 @@ public class RawImgVO{
 	private String raw_image_title;
 	private String raw_image_content;
 	private boolean admin_accept;
+	private String user_email;
 	
 	public String getRaw_image_path() {
 		return raw_image_path;
@@ -61,5 +62,10 @@ public class RawImgVO{
 	@Override
 	public String toString() {
 		return "MemberVO [raw_image_path=" + raw_image_path + ", price=" + price + ", regdate=" + regdate + ", admin_accept=" + admin_accept + "]";
+	}
+
+	public void setUser_email(String user_email) {
+		// TODO Auto-generated method stub
+		this.user_email = user_email;
 	}
 }
